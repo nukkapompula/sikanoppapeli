@@ -1,3 +1,5 @@
-p {
-    color: blue;
+body {
+    font-family: "Goudy Old Style", Arial;
+    font-size: 150%;
+    text-align: center;
 }
