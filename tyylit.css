@@ -13,3 +13,7 @@ button, input {
 #alkuPelaajat {
     display: block;
 }
+
+#alkuNimet {
+    display: none;
+}
