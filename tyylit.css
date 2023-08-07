@@ -3,3 +3,13 @@ body {
     font-size: 150%;
     text-align: center;
 }
+
+button, input {
+    border: 2px solid black;
+    font-family: "Goudy Old Style", Arial;
+    font-size: 90%;
+}
+
+#alkuPelaajat {
+    display: block;
+}
