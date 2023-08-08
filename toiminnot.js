@@ -42,7 +42,7 @@ function tarkistaAsetukset(event){
         valmistelutOk = true;
     }
 
-    // pelaajien nimet eivät ole tyhjiä
+    // pelaajanimien tarkistus (ei tyhjiä merkkijonoja)
     for(let indeksi=0; indeksi<document.getElementsByClassName("pNimi").length; indeksi++){
         if(document.getElementsByClassName("pNimi")[indeksi].value == ""){
             valmistelutOk = false;
@@ -52,7 +52,7 @@ function tarkistaAsetukset(event){
         }
     }
 
-    // luodaan kullekin pelaajalle olio
+    // luodaan kullekin pelaajalle olio ja tallennetaan maksimipisteet peliä varten
     if(valmistelutOk == true){
         console.log("kaikki ok");
         for(let indeksi=0; indeksi<document.getElementsByClassName("pNimi").length; indeksi++){
@@ -62,6 +62,8 @@ function tarkistaAsetukset(event){
                 kierrospisteet: 0
             })
         }
-        console.log(pelaajat)
+        maxPisteet = document.getElementById("voittoPisteet").value;
+        console.log(pelaajat);
+        console.log(maxPisteet)
     }
 }
