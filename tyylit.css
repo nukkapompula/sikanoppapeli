@@ -4,7 +4,7 @@ body {
     text-align: center;
 }
 
-button, input {
+button, input, select {
     border: 2px solid black;
     font-family: "Goudy Old Style", Arial;
     font-size: 90%;
@@ -14,6 +14,6 @@ button, input {
     display: block;
 }
 
-#alkuNimet {
+#asetukset {
     display: none;
 }
