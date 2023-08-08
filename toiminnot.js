@@ -32,11 +32,21 @@ function nimeaPelaajat(){
 
 function tarkistaAsetukset(event){
     event.preventDefault();
-    if(document.getElementById("voittoPisteet").value < 6){
-        console.log("ei passaa, patu");
+    // pistemäärän kelpoisuus
+    if(document.getElementById("voittoPisteet").value < 1){
         valmistelutOk = false;
         document.getElementById("voittoPisteet").value = "";
     } else {
         valmistelutOk = true;
+    }
+
+    // pelaajien nimet kunnossa
+    for(let indeksi=0; indeksi<document.getElementsByClassName("pNimi").length; indeksi++){
+        if(document.getElementsByClassName("pNimi")[indeksi].value == ""){
+            valmistelutOk = false;
+            return
+        } else {
+            valmistelutOk = true;
+        }
     }
 }
