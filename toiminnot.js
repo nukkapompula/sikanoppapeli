@@ -20,8 +20,17 @@ function nimeaPelaajat(){
         let uusiElementti = document.createElement("p");
         let uusiElementtiNimi = document.createTextNode(`Pelaajan ${indeksi+1} nimi: `);
         let uusiSyote = document.createElement("input");
+        uusiSyote.className = "pNimi";
         uusiElementti.appendChild(uusiElementtiNimi);
         uusiElementti.appendChild(uusiSyote);
         document.getElementById("alkuNimet").appendChild(uusiElementti);
     }
+    let uusiOhje = document.createElement("p");
+    let uusiOhjeTeksti = document.createTextNode("Pelin voittamiseen vaadittava pistemäärä: ");
+    let pisteSyote = document.createElement("input");
+    pisteSyote.id = "voittoPisteet";
+    pisteSyote.type = "number";
+    uusiOhje.appendChild(uusiOhjeTeksti);
+    uusiOhje.appendChild(pisteSyote);
+    document.getElementById("alkuNimet").appendChild(uusiOhje);
 }
