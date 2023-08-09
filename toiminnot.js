@@ -1,5 +1,7 @@
 document.getElementById("pelaajatOk").addEventListener("click", pelaajaMaara);
 document.getElementById("asetuksetOk").addEventListener("click", tarkistaAsetukset);
+let kenenVuoro = document.getElementById("kenenVuoro");
+let pisteraja = document.getElementById("pisteraja");
 var osallistujat = 0;
 var valmistelutOk = false;
 var maxPisteet = 0;
@@ -39,6 +41,7 @@ function tarkistaAsetukset(event){
     if(document.getElementById("voittoPisteet").value < 1){
         valmistelutOk = false;
         document.getElementById("voittoPisteet").value = "";
+        return
     } else {
         valmistelutOk = true;
     }
@@ -77,6 +80,7 @@ function tarkistaAsetukset(event){
 }
 
 function peli1Nopalla(){
+    // valmistelut
     document.getElementById("yhdenNopanPeli").style.display = "grid";
     for(indeksi=0; indeksi<pelaajat.length; indeksi++){
         let nimi = document.createElement("p");
@@ -88,4 +92,6 @@ function peli1Nopalla(){
         document.getElementById("pelaajaLoota").appendChild(nimi);
         document.getElementById("pelaajaLoota").appendChild(saldo);
     }
+    kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[0].nimi}!`
+    pisteraja.innerHTML = `Voittoon tarvitaan ${maxPisteet} pistettä tai enemmän.`
 }

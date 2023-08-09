@@ -44,7 +44,7 @@
                 Pelaaja heittää vuorollaan noppaa niin kauan, kunnes hän joko saa silmäluvuksi ykkösen 
                 tai päättää lopettaa heittämisen. Ensimmäisessä tapauksessa vuoron pistemäärä nollataan, 
                 jälkimmäisessä heittojen silmälukujen summa lisätään pelaajan pistesaldoon. Vuoro siirtyy 
-                toiselle pelaajalle. Voittaja on sovitun pistemäärän ensiksi saavuttanut pelaaja.
+                seuraavalle pelaajalle. Voittaja on sovitun pistemäärän ensiksi saavuttanut pelaaja.
             </p>
             <p id="lisaohjeet">
                 Mikäli kahdella nopalla pelatessa toinen silmäluvuista on yksi, vuoro vaihtuu sekä 
@@ -59,12 +59,14 @@
             <div id="pelaajaLoota"></div>
 
             <div id="tilanneLoota">
-                <p>MOIKKELI</p>
+                <p id="kenenVuoro"></p>
+                <p id="pisteraja"></p>
             </div>
 
             <div id="noppaLoota">
                 <img src="nro1.gif" alt="noppakuvake" id="noppakuvake">
                 <button type="submit" id="heita">Heitä noppaa</button>
+                <button type="submit" id="lopeta">Lopeta heittäminen</button>
             </div>
         </div>
 
