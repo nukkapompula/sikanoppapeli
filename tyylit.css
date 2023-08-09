@@ -19,6 +19,12 @@ button, input, select {
 }
 
 #peliohjeet {
+    display: none;
     font-size: 80%;
     border: 2px solid black;
+    padding: 6px;
+}
+
+#lisaohjeet {
+    display: none;
 }

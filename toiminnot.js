@@ -63,6 +63,14 @@ function tarkistaAsetukset(event){
             })
         }
         maxPisteet = document.getElementById("voittoPisteet").value;
+
+        // laitetaan peliohjeet näkyviin pelaajan valitseman noppamäärän mukaan
+        if(document.getElementById("noppaValikko").value == "1noppa"){
+            document.getElementById("peliohjeet").style.display = "block";
+        } else {
+            document.getElementById("peliohjeet").style.display = "block";
+            document.getElementById("lisaohjeet").style.display = "block";
+        }
         console.log(pelaajat);
         console.log(maxPisteet)
     }
