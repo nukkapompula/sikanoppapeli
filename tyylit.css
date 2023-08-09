@@ -28,5 +28,5 @@ button, input, select {
 #yhdenNopanPeli {
     width: 100%;
     display: none;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }

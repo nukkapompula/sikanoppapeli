@@ -3,6 +3,7 @@ document.getElementById("asetuksetOk").addEventListener("click", tarkistaAsetuks
 var osallistujat = 0;
 var valmistelutOk = false;
 var maxPisteet = 0;
+var vuoroPisteet = 0;
 var heppu = null;
 var pelaajat = [];
 
@@ -54,7 +55,6 @@ function tarkistaAsetukset(event){
 
     // luodaan kullekin pelaajalle olio ja tallennetaan maksimipisteet peliä varten
     if(valmistelutOk == true){
-        console.log("kaikki ok");
         for(let indeksi=0; indeksi<document.getElementsByClassName("pNimi").length; indeksi++){
             pelaajat.push(heppu = {
                 nimi: `${document.getElementsByClassName("pNimi")[indeksi].value}`,
@@ -78,4 +78,14 @@ function tarkistaAsetukset(event){
 
 function peli1Nopalla(){
     document.getElementById("yhdenNopanPeli").style.display = "grid";
+    for(indeksi=0; indeksi<pelaajat.length; indeksi++){
+        let nimi = document.createElement("p");
+        let nimiTeksti = document.createTextNode(pelaajat[indeksi].nimi + ", pisteet:");
+        let saldo = document.createElement("p");
+        let saldoArvo = document.createTextNode(0);
+        nimi.appendChild(nimiTeksti);
+        saldo.appendChild(saldoArvo);
+        document.getElementById("pelaajaLoota").appendChild(nimi);
+        document.getElementById("pelaajaLoota").appendChild(saldo);
+    }
 }
