@@ -95,3 +95,11 @@ function peli1Nopalla(){
     kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[0].nimi}!`
     pisteraja.innerHTML = `Voittoon tarvitaan ${maxPisteet} pistettä tai enemmän.`
 }
+
+function heitaNoppaa(event){
+    console.log("sisso");
+}
+
+function lopeta(event){
+    console.log("hitto");
+}
