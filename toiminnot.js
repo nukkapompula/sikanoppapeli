@@ -71,7 +71,11 @@ function tarkistaAsetukset(event){
             document.getElementById("peliohjeet").style.display = "block";
             document.getElementById("lisaohjeet").style.display = "block";
         }
-        console.log(pelaajat);
-        console.log(maxPisteet)
+        document.getElementById("asetukset").style.display = "none";
+        peli1Nopalla();
     }
+}
+
+function peli1Nopalla(){
+    document.getElementById("yhdenNopanPeli").style.display = "grid";
 }

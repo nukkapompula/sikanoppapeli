@@ -14,7 +14,7 @@ button, input, select {
     text-align: center;
 }
 
-#asetukset {
+#asetukset, #lisaohjeet, #yhdenNopanPeli {
     display: none;
 }
 
@@ -25,6 +25,8 @@ button, input, select {
     padding: 6px;
 }
 
-#lisaohjeet {
+#yhdenNopanPeli {
+    width: 100%;
     display: none;
+    grid-template-columns: 1fr 1fr;
 }
