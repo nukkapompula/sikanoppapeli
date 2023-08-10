@@ -142,6 +142,10 @@ function lopeta(event){
     console.log("lopetit vuorosi");
     document.getElementById("lopeta").style.display = "none";
     pelaajat[vuoroNro].pistesaldo += vuoroPisteet;
+    // tarkistetaan riittävätkö pisteet voittoon
+    if(pelaajat[vuoroNro].pistesaldo >= maxPisteet){
+        document.write(`${pelaajat[vuoroNro].nimi} on voittaja! Hurraa!`)
+    }
     document.getElementsByClassName("kokoPisteet")[vuoroNro].innerHTML = pelaajat[vuoroNro].pistesaldo;
     vuoroPisteet = 0;
     vuoroNro += 1;
