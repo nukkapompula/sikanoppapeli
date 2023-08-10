@@ -1,3 +1,17 @@
+// nopan kaikki silmäluvut yhdistetään kuviin
+var sivu0 = new Image();
+sivu0.src = "nro1.gif";
+var sivu1 = new Image();
+sivu1.src = "nro2.gif";
+var sivu2 = new Image();
+sivu2.src = "nro3.gif";
+var sivu3 = new Image();
+sivu3.src = "nro4.gif";
+var sivu4 = new Image();
+sivu4.src = "nro5.gif";
+var sivu5 = new Image();
+sivu5.src = "nro6.gif";
+
 document.getElementById("pelaajatOk").addEventListener("click", pelaajaMaara);
 document.getElementById("asetuksetOk").addEventListener("click", tarkistaAsetukset);
 let kenenVuoro = document.getElementById("kenenVuoro");
@@ -8,6 +22,8 @@ var maxPisteet = 0;
 var vuoroPisteet = 0;
 var heppu = null;
 var pelaajat = [];
+var pisteetSaavutettu = false;
+var keskeytaVuoro = false;
 
 function pelaajaMaara(event){
     // käyttäjän syöttäessä pelaajien lukumäärän asetukset ilmestyvät näkyviin
@@ -91,14 +107,31 @@ function peli1Nopalla(){
         document.getElementById("pelaajaLoota").appendChild(nimi);
         document.getElementById("pelaajaLoota").appendChild(saldo);
     }
-    kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[0].nimi}!`
     pisteraja.innerHTML = `Voittoon tarvitaan ${maxPisteet} pistettä tai enemmän.`
+
+    // silmukka koko pelin jatkuvuudelle
+    /* while(pisteetSaavutettu == false){
+        // silmukka pelaajien vuorosyklille
+        for(indeksi=0; indeksi<pelaajat.length; indeksi++){
+            keskeytaVuoro = false;
+            // silmukka yhden pelaajan heittovuorolle
+            while(keskeytaVuoro == false){
+                kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[indeksi].nimi}!`
+            }
+        }
+    }
+    */
 }
 
 function heitaNoppaa(event){
-    console.log("sisso");
+    console.log("heitit noppaa");
+    // satunnaisluku väliltä 0-5
+    var noppaluku = Math.round(Math.random()*5);
+    document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
+    console.log(noppaluku);
 }
 
 function lopeta(event){
-    console.log("hitto");
+    console.log("lopetit vuorosi");
+    keskeytaVuoro = true;
 }
