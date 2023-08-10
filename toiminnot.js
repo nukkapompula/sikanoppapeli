@@ -61,8 +61,7 @@ function tarkistaAsetukset(event){
         for(let indeksi=0; indeksi<document.getElementsByClassName("pNimi").length; indeksi++){
             pelaajat.push(heppu = {
                 nimi: `${document.getElementsByClassName("pNimi")[indeksi].value}`,
-                pistesaldo: 0,
-                kierrospisteet: 0
+                pistesaldo: 0
             })
         }
         maxPisteet = document.getElementById("voittoPisteet").value;
