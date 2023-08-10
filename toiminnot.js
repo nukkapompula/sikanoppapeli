@@ -15,6 +15,7 @@ sivu5.src = "nro6.gif";
 document.getElementById("pelaajatOk").addEventListener("click", pelaajaMaara);
 document.getElementById("asetuksetOk").addEventListener("click", tarkistaAsetukset);
 let kenenVuoro = document.getElementById("kenenVuoro");
+let heittoPst = document.getElementById("heittoPst");
 let pisteraja = document.getElementById("pisteraja");
 var osallistujat = 0;
 var valmistelutOk = false;
@@ -23,7 +24,6 @@ var vuoroPisteet = 0;
 var heppu = null;
 var pelaajat = [];
 var pisteetSaavutettu = false;
-var keskeytaVuoro = false;
 var vuoroNro = 0;
 
 function pelaajaMaara(event){
@@ -109,7 +109,9 @@ function peli1Nopalla(){
         document.getElementById("pelaajaLoota").appendChild(nimi);
         document.getElementById("pelaajaLoota").appendChild(saldo);
     }
-    pisteraja.innerHTML = `Voittoon tarvitaan ${maxPisteet} pistettä tai enemmän.`
+    kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
+    heittoPst.innerHTML = "";
+    pisteraja.innerHTML = `Voittoon tarvitaan ${maxPisteet} pistettä tai enemmän.`;
 }
 
 function heitaNoppaa(event){
@@ -119,21 +121,26 @@ function heitaNoppaa(event){
     document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
     if(noppaluku == 0){
         console.log("tuli ykkönen!")
-        keskeytaVuoro = true;
+        document.getElementById("lopeta").style.display = "none";
         vuoroPisteet = 0;
+        heittoPst.innerHTML = `Turkanen, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet!`;
         vuoroNro += 1;
         if(vuoroNro == pelaajat.length){
             vuoroNro = 0;
         }
+        kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`
     } else {
         vuoroPisteet += noppaluku+1;
-        console.log(`vuoron pisteet ovat ${vuoroPisteet}`)
+        console.log(`vuoron pisteet ovat ${vuoroPisteet}`);
+        kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
+        heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
+        document.getElementById("lopeta").style.display = "block";
     }
 }
 
 function lopeta(event){
     console.log("lopetit vuorosi");
-    keskeytaVuoro = true;
+    document.getElementById("lopeta").style.display = "none";
     pelaajat[vuoroNro].pistesaldo += vuoroPisteet;
     document.getElementsByClassName("kokoPisteet")[vuoroNro].innerHTML = pelaajat[vuoroNro].pistesaldo;
     vuoroPisteet = 0;
@@ -141,4 +148,6 @@ function lopeta(event){
     if(vuoroNro == pelaajat.length){
         vuoroNro = 0;
     }
+    kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
+    heittoPst.innerHTML = "";
 }
