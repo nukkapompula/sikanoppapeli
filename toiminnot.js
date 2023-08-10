@@ -24,6 +24,7 @@ var heppu = null;
 var pelaajat = [];
 var pisteetSaavutettu = false;
 var keskeytaVuoro = false;
+var vuoroNro = 0;
 
 function pelaajaMaara(event){
     // käyttäjän syöttäessä pelaajien lukumäärän asetukset ilmestyvät näkyviin
@@ -102,6 +103,7 @@ function peli1Nopalla(){
         let nimiTeksti = document.createTextNode(pelaajat[indeksi].nimi + ", pisteet:");
         let saldo = document.createElement("p");
         let saldoArvo = document.createTextNode(0);
+        saldo.className = "kokoPisteet";
         nimi.appendChild(nimiTeksti);
         saldo.appendChild(saldoArvo);
         document.getElementById("pelaajaLoota").appendChild(nimi);
@@ -125,13 +127,23 @@ function peli1Nopalla(){
 
 function heitaNoppaa(event){
     console.log("heitit noppaa");
-    // satunnaisluku väliltä 0-5
+    // pseudosatunnaisluku väliltä 0-5
     var noppaluku = Math.round(Math.random()*5);
     document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
-    console.log(noppaluku);
+    if(noppaluku == 0){
+        console.log("tuli ykkönen!")
+        keskeytaVuoro = true;
+        vuoroPisteet = 0;
+    } else {
+        vuoroPisteet += noppaluku+1;
+        console.log(`vuoron pisteet ovat ${vuoroPisteet}`)
+    }
 }
 
 function lopeta(event){
     console.log("lopetit vuorosi");
     keskeytaVuoro = true;
+    pelaajat[0].pistesaldo += vuoroPisteet;
+    document.getElementsByClassName("kokoPisteet")[0].innerHTML = pelaajat[0].pistesaldo;
+    vuoroPisteet = 0;
 }
