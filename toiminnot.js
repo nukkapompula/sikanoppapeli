@@ -110,19 +110,6 @@ function peli1Nopalla(){
         document.getElementById("pelaajaLoota").appendChild(saldo);
     }
     pisteraja.innerHTML = `Voittoon tarvitaan ${maxPisteet} pistettä tai enemmän.`
-
-    // silmukka koko pelin jatkuvuudelle
-    /* while(pisteetSaavutettu == false){
-        // silmukka pelaajien vuorosyklille
-        for(indeksi=0; indeksi<pelaajat.length; indeksi++){
-            keskeytaVuoro = false;
-            // silmukka yhden pelaajan heittovuorolle
-            while(keskeytaVuoro == false){
-                kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[indeksi].nimi}!`
-            }
-        }
-    }
-    */
 }
 
 function heitaNoppaa(event){
@@ -134,6 +121,10 @@ function heitaNoppaa(event){
         console.log("tuli ykkönen!")
         keskeytaVuoro = true;
         vuoroPisteet = 0;
+        vuoroNro += 1;
+        if(vuoroNro == pelaajat.length){
+            vuoroNro = 0;
+        }
     } else {
         vuoroPisteet += noppaluku+1;
         console.log(`vuoron pisteet ovat ${vuoroPisteet}`)
@@ -143,7 +134,11 @@ function heitaNoppaa(event){
 function lopeta(event){
     console.log("lopetit vuorosi");
     keskeytaVuoro = true;
-    pelaajat[0].pistesaldo += vuoroPisteet;
-    document.getElementsByClassName("kokoPisteet")[0].innerHTML = pelaajat[0].pistesaldo;
+    pelaajat[vuoroNro].pistesaldo += vuoroPisteet;
+    document.getElementsByClassName("kokoPisteet")[vuoroNro].innerHTML = pelaajat[vuoroNro].pistesaldo;
     vuoroPisteet = 0;
+    vuoroNro += 1;
+    if(vuoroNro == pelaajat.length){
+        vuoroNro = 0;
+    }
 }
