@@ -47,9 +47,16 @@ img {
     display: inline-block;
     margin: 0px 33%;
     margin-top: 10px;
+    line-height: 0.9;
 }
 
 #pelaajaLoota {
+    margin-top: 10px;
     font-size: 80%;
     line-height: 0.2;
+}
+
+#tilanneLoota {
+    margin-top: 10px;
+    line-height: 0.9;
 }
