@@ -116,6 +116,7 @@ function peliAlkaa(){
     kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
     heittoPst.innerHTML = "";
     pisteraja.innerHTML = `Voittoon tarvitaan ${maxPisteet} pistettä tai enemmän.`;
+    tuplia = 0;
 }
 
 function heitaNoppaa(event){
@@ -149,6 +150,7 @@ function heitaNoppaa(event){
         if(noppaluku == 0 && noppaluku2 != 0 || noppaluku != 0 && noppaluku2 == 0){
             document.getElementById("lopeta").style.display = "none";
             vuoroPisteet = 0;
+            tuplia = 0;
             heittoPst.innerHTML = `Turkanen, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet!`;
             vuoroNro += 1;
             if(vuoroNro == pelaajat.length){
@@ -194,6 +196,7 @@ function lopeta(event){
     }
     document.getElementsByClassName("kokoPisteet")[vuoroNro].innerHTML = pelaajat[vuoroNro].pistesaldo;
     vuoroPisteet = 0;
+    tuplia = 0;
     vuoroNro += 1;
     if(vuoroNro == pelaajat.length){
         vuoroNro = 0;
@@ -205,7 +208,8 @@ function lopeta(event){
 function liikaaTuplia(){
     document.getElementById("lopeta").style.display = "none";
     vuoroPisteet = 0;
-    heittoPst.innerHTML = `Samperi, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan kolmesti parin!`;
+    heittoPst.innerHTML = `Samperi, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan parin kolmesti!`;
+    tuplia = 0;
     vuoroNro += 1;
     if(vuoroNro == pelaajat.length){
         vuoroNro = 0;
