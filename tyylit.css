@@ -2,13 +2,16 @@ body {
     font-family: "Goudy Old Style", Arial;
     font-size: 150%;
     text-align: center;
+    line-height: 0.9;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-button, input, select {
+button, input, select, option {
     border: 2px solid black;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.666);
     font-family: "Goudy Old Style", Arial;
     font-size: 90%;
     text-align: center;
@@ -23,6 +26,8 @@ button, input, select {
     display: none;
     font-size: 80%;
     border: 2px solid black;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.666);
     padding: 6px;
 }
 
@@ -34,10 +39,17 @@ button, input, select {
 
 img {
     padding: 10px 0px;
-    margin: 10px 50px;
+    margin: 0px 50px;
+    margin-top: 10px;
 }
 
-#heita {
+#heita, #lopeta {
     display: inline-block;
     margin: 0px 33%;
+    margin-top: 10px;
+}
+
+#pelaajaLoota {
+    font-size: 80%;
+    line-height: 0.2;
 }

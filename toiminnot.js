@@ -117,6 +117,7 @@ function peliAlkaa(){
     kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
     heittoPst.innerHTML = "";
     pisteraja.innerHTML = `Voittoon tarvitaan ${maxPisteet} pistettä tai enemmän.`;
+    document.getElementById("lopeta").style.display = "none";
     tuplia = 0;
 }
 
