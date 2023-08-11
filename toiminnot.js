@@ -162,8 +162,15 @@ function heitaNoppaa(event){
             kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
             heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
             document.getElementById("lopeta").style.display = "block";
+        // muut tuplat
+        } else if(noppaluku == noppaluku2){
+            tuplia += 1;
+            vuoroPisteet += (noppaluku+1 + noppaluku2+1) * 2;
+            kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
+            heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
+            document.getElementById("lopeta").style.display = "block";
         } else {
-            vuoroPisteet += noppaluku+1;
+            vuoroPisteet += noppaluku+1 + noppaluku2+1;
             kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
             heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
             document.getElementById("lopeta").style.display = "block";
