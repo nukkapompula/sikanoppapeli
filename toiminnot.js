@@ -99,8 +99,9 @@ function tarkistaAsetukset(event){
 function peliAlkaa(){
     // valmistelut
     document.getElementById("noppaPeli").style.display = "grid";
-    if(document.getElementById("noppaValikko").value == "2noppaa"){
-        document.getElementById("extranoppa").style.display = "block";
+    if(document.getElementById("noppaValikko").value == "1noppa"){
+        document.getElementById("extranoppa").style.display = "none";
+        document.getElementById("heita").innerHTML = "Heitä noppaa";
     }
     for(indeksi=0; indeksi<pelaajat.length; indeksi++){
         let nimi = document.createElement("p");

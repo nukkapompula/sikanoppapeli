@@ -12,9 +12,10 @@ button, input, select {
     font-family: "Goudy Old Style", Arial;
     font-size: 90%;
     text-align: center;
+    padding: 6px;
 }
 
-#asetukset, #lisaohjeet, #noppaPeli, #lopeta, #voittoIkkuna, #extranoppa {
+#asetukset, #lisaohjeet, #noppaPeli, #lopeta, #voittoIkkuna {
     display: none;
 }
 
@@ -29,4 +30,14 @@ button, input, select {
     width: 100%;
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
+}
+
+img {
+    padding: 10px 0px;
+    margin: 10px 50px;
+}
+
+#heita {
+    display: inline-block;
+    margin: 0px 33%;
 }
