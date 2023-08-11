@@ -25,6 +25,7 @@ var heppu = null;
 var pelaajat = [];
 var pisteetSaavutettu = false;
 var vuoroNro = 0;
+var tuplia = 0;
 
 function pelaajaMaara(event){
     // käyttäjän syöttäessä pelaajien lukumäärän asetukset ilmestyvät näkyviin
@@ -91,13 +92,16 @@ function tarkistaAsetukset(event){
             document.getElementById("lisaohjeet").style.display = "block";
         }
         document.getElementById("asetukset").style.display = "none";
-        peli1Nopalla();
+        peliAlkaa();
     }
 }
 
-function peli1Nopalla(){
+function peliAlkaa(){
     // valmistelut
-    document.getElementById("yhdenNopanPeli").style.display = "grid";
+    document.getElementById("noppaPeli").style.display = "grid";
+    if(document.getElementById("noppaValikko").value == "2noppaa"){
+        document.getElementById("extranoppa").style.display = "block";
+    }
     for(indeksi=0; indeksi<pelaajat.length; indeksi++){
         let nimi = document.createElement("p");
         let nimiTeksti = document.createTextNode(pelaajat[indeksi].nimi + ", pisteet:");
@@ -115,38 +119,70 @@ function peli1Nopalla(){
 }
 
 function heitaNoppaa(event){
-    console.log("heitit noppaa");
-    // pseudosatunnaisluku väliltä 0-5
-    var noppaluku = Math.round(Math.random()*5);
-    document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
-    if(noppaluku == 0){
-        console.log("tuli ykkönen!")
-        document.getElementById("lopeta").style.display = "none";
-        vuoroPisteet = 0;
-        heittoPst.innerHTML = `Turkanen, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet!`;
-        vuoroNro += 1;
-        if(vuoroNro == pelaajat.length){
-            vuoroNro = 0;
+    // toiminnot yhdellä nopalla pelatessa
+    if(document.getElementById("noppaValikko").value == "1noppa"){
+        // pseudosatunnaisluku väliltä 0-5
+        var noppaluku = Math.round(Math.random()*5);
+        document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
+        if(noppaluku == 0){
+            document.getElementById("lopeta").style.display = "none";
+            vuoroPisteet = 0;
+            heittoPst.innerHTML = `Turkanen, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet!`;
+            vuoroNro += 1;
+            if(vuoroNro == pelaajat.length){
+                vuoroNro = 0;
+            }
+            kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`
+        } else {
+            vuoroPisteet += noppaluku+1;
+            kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
+            heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
+            document.getElementById("lopeta").style.display = "block";
         }
-        kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`
     } else {
-        vuoroPisteet += noppaluku+1;
-        console.log(`vuoron pisteet ovat ${vuoroPisteet}`);
-        kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
-        heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
-        document.getElementById("lopeta").style.display = "block";
+        // toiminnot kahdella nopalla
+        var noppaluku = Math.round(Math.random()*5);
+        var noppaluku2 = Math.round(Math.random()*5);
+        document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
+        document.images["noppakuvake2"].src = eval("sivu" + noppaluku2 + ".src");
+        // ykkönen ja luku väliltä 2-6
+        if(noppaluku == 0 && noppaluku2 != 0 || noppaluku != 0 && noppaluku2 == 0){
+            document.getElementById("lopeta").style.display = "none";
+            vuoroPisteet = 0;
+            heittoPst.innerHTML = `Turkanen, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet!`;
+            vuoroNro += 1;
+            if(vuoroNro == pelaajat.length){
+                vuoroNro = 0;
+            }
+            kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`
+        // tuplaykköset    
+        } else if(noppaluku == 0 && noppaluku2 == 0){
+            tuplia += 1;
+            vuoroPisteet += 25;
+            kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
+            heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
+            document.getElementById("lopeta").style.display = "block";
+        } else {
+            vuoroPisteet += noppaluku+1;
+            kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
+            heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
+            document.getElementById("lopeta").style.display = "block";
+        }
+    }
+    if(tuplia == 3){
+        liikaaTuplia();
     }
 }
 
+
 function lopeta(event){
-    console.log("lopetit vuorosi");
     document.getElementById("lopeta").style.display = "none";
     pelaajat[vuoroNro].pistesaldo += vuoroPisteet;
     // tarkistetaan riittävätkö pisteet voittoon
     if(pelaajat[vuoroNro].pistesaldo >= maxPisteet){
         document.getElementById("voittoIkkuna").style.display = "block";
         document.getElementById("peliohjeet").style.display = "none";
-        document.getElementById("yhdenNopanPeli").style.display = "none";
+        document.getElementById("noppaPeli").style.display = "none";
         document.getElementById("voittoTeksti").innerHTML = `${pelaajat[vuoroNro].nimi} on voittaja! Hurraa!`
     }
     document.getElementsByClassName("kokoPisteet")[vuoroNro].innerHTML = pelaajat[vuoroNro].pistesaldo;
@@ -157,4 +193,15 @@ function lopeta(event){
     }
     kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
     heittoPst.innerHTML = "";
+}
+
+function liikaaTuplia(){
+    document.getElementById("lopeta").style.display = "none";
+    vuoroPisteet = 0;
+    heittoPst.innerHTML = `Samperi, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan kolmesti parin!`;
+    vuoroNro += 1;
+    if(vuoroNro == pelaajat.length){
+        vuoroNro = 0;
+    }
+    kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`
 }

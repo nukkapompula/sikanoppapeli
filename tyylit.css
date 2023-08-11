@@ -14,7 +14,7 @@ button, input, select {
     text-align: center;
 }
 
-#asetukset, #lisaohjeet, #yhdenNopanPeli, #lopeta, #voittoIkkuna {
+#asetukset, #lisaohjeet, #noppaPeli, #lopeta, #voittoIkkuna, #extranoppa {
     display: none;
 }
 
@@ -25,7 +25,7 @@ button, input, select {
     padding: 6px;
 }
 
-#yhdenNopanPeli {
+#noppaPeli {
     width: 100%;
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
