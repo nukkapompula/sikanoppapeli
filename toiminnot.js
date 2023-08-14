@@ -124,7 +124,9 @@ function peliAlkaa(){
 }
 
 function heitaNoppaa(event){
-    document.getElementById("heittoPst").style.display = "none";
+    document.getElementById("heittoPst").style.visibility = "hidden";
+    document.getElementById("kenenVuoro").style.visibility = "hidden";
+    document.getElementById("heita").style.visibility = "hidden";
     // toiminnot yhdellä nopalla pelatessa
     if(document.getElementById("noppaValikko").value == "1noppa"){
         // pseudosatunnaisluku väliltä 0-5
@@ -186,7 +188,7 @@ function heitaNoppaa(event){
             document.getElementById("lopeta").style.display = "block";
         }
     }
-    if(tuplia == 3){
+    if(tuplia > 2){
         liikaaTuplia();
     }
 }
@@ -216,7 +218,7 @@ function lopeta(event){
 function liikaaTuplia(){
     document.getElementById("lopeta").style.display = "none";
     vuoroPisteet = 0;
-    heittoPst.innerHTML = `Samperi, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan ykkösen saadessaan parin kolmesti!`;
+    heittoPst.innerHTML = `Samperi, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan parin kolmesti!`;
     tuplia = 0;
     vuoroNro += 1;
     if(vuoroNro == pelaajat.length){
@@ -228,5 +230,7 @@ function liikaaTuplia(){
 function animaatioLoppu(){
     document.getElementById("norminoppa").style.animation = "none";
     document.getElementById("extranoppa").style.animation = "none";
-    document.getElementById("heittoPst").style.display = "block";
+    document.getElementById("heittoPst").style.visibility = "visible";
+    document.getElementById("kenenVuoro").style.visibility = "visible";
+    document.getElementById("heita").style.visibility = "visible";
 }
