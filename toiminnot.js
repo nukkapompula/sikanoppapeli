@@ -15,6 +15,7 @@ sivu5.src = "nro6.gif";
 document.getElementById("pelaajatOk").addEventListener("click", pelaajaMaara);
 document.getElementById("asetuksetOk").addEventListener("click", tarkistaAsetukset);
 document.getElementById("norminoppa").addEventListener("animationend", animaatioLoppu)
+document.getElementById("extranoppa").addEventListener("animationend", animaatioLoppu)
 let kenenVuoro = document.getElementById("kenenVuoro");
 let heittoPst = document.getElementById("heittoPst");
 let pisteraja = document.getElementById("pisteraja");
@@ -150,6 +151,8 @@ function heitaNoppaa(event){
         var noppaluku2 = Math.round(Math.random()*5);
         document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
         document.images["noppakuvake2"].src = eval("sivu" + noppaluku2 + ".src");
+        document.getElementById("norminoppa").style.animation = "noppa 0.5s ease-in 0s 1 normal";
+        document.getElementById("extranoppa").style.animation = "noppaKaanteinen 0.5s ease-in 0s 1 normal";
         // ykkönen ja luku väliltä 2-6
         if(noppaluku == 0 && noppaluku2 != 0 || noppaluku != 0 && noppaluku2 == 0){
             document.getElementById("lopeta").style.display = "none";
@@ -223,4 +226,5 @@ function liikaaTuplia(){
 
 function animaatioLoppu(){
     document.getElementById("norminoppa").style.animation = "none";
+    document.getElementById("extranoppa").style.animation = "none";
 }
