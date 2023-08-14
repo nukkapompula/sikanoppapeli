@@ -129,7 +129,6 @@ function heitaNoppaa(event){
     document.getElementById("heita").style.visibility = "hidden";
     // toiminnot yhdellä nopalla pelatessa
     if(document.getElementById("noppaValikko").value == "1noppa"){
-        // pseudosatunnaisluku väliltä 0-5
         var noppaluku = Math.round(Math.random()*5);
         document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
         document.getElementById("norminoppa").style.animation = "noppa 0.5s ease-in 0s 1 normal";
@@ -202,7 +201,7 @@ function lopeta(event){
         document.getElementById("voittoIkkuna").style.display = "block";
         document.getElementById("peliohjeet").style.display = "none";
         document.getElementById("noppaPeli").style.display = "none";
-        document.getElementById("voittoTeksti").innerHTML = `${pelaajat[vuoroNro].nimi} on voittaja! Hurraa!`
+        document.getElementById("voittoTeksti").innerHTML = `${pelaajat[vuoroNro].nimi} on voittaja! Hurraa!`;
     }
     document.getElementsByClassName("kokoPisteet")[vuoroNro].innerHTML = pelaajat[vuoroNro].pistesaldo;
     vuoroPisteet = 0;
@@ -228,6 +227,7 @@ function liikaaTuplia(){
 }
 
 function animaatioLoppu(){
+    // elementtien tuleminen näkyviin heittojen jälkeen
     document.getElementById("norminoppa").style.animation = "none";
     document.getElementById("extranoppa").style.animation = "none";
     document.getElementById("heittoPst").style.visibility = "visible";
