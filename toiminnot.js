@@ -14,6 +14,7 @@ sivu5.src = "nro6.gif";
 
 document.getElementById("pelaajatOk").addEventListener("click", pelaajaMaara);
 document.getElementById("asetuksetOk").addEventListener("click", tarkistaAsetukset);
+document.getElementById("norminoppa").addEventListener("animationend", animaatioLoppu)
 let kenenVuoro = document.getElementById("kenenVuoro");
 let heittoPst = document.getElementById("heittoPst");
 let pisteraja = document.getElementById("pisteraja");
@@ -127,6 +128,7 @@ function heitaNoppaa(event){
         // pseudosatunnaisluku väliltä 0-5
         var noppaluku = Math.round(Math.random()*5);
         document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
+        document.getElementById("norminoppa").style.animation = "noppa 0.5s ease-in 0s 1 normal";
         if(noppaluku == 0){
             document.getElementById("lopeta").style.display = "none";
             vuoroPisteet = 0;
@@ -217,4 +219,8 @@ function liikaaTuplia(){
         vuoroNro = 0;
     }
     kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`
+}
+
+function animaatioLoppu(){
+    document.getElementById("norminoppa").style.animation = "none";
 }
