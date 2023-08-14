@@ -124,6 +124,7 @@ function peliAlkaa(){
 }
 
 function heitaNoppaa(event){
+    document.getElementById("heittoPst").style.display = "none";
     // toiminnot yhdellä nopalla pelatessa
     if(document.getElementById("noppaValikko").value == "1noppa"){
         // pseudosatunnaisluku väliltä 0-5
@@ -133,7 +134,7 @@ function heitaNoppaa(event){
         if(noppaluku == 0){
             document.getElementById("lopeta").style.display = "none";
             vuoroPisteet = 0;
-            heittoPst.innerHTML = `Turkanen, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet!`;
+            heittoPst.innerHTML = `Turkanen, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan ykkösen!`;
             vuoroNro += 1;
             if(vuoroNro == pelaajat.length){
                 vuoroNro = 0;
@@ -158,7 +159,7 @@ function heitaNoppaa(event){
             document.getElementById("lopeta").style.display = "none";
             vuoroPisteet = 0;
             tuplia = 0;
-            heittoPst.innerHTML = `Turkanen, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet!`;
+            heittoPst.innerHTML = `Turkanen, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan ykkösen!`;
             vuoroNro += 1;
             if(vuoroNro == pelaajat.length){
                 vuoroNro = 0;
@@ -215,7 +216,7 @@ function lopeta(event){
 function liikaaTuplia(){
     document.getElementById("lopeta").style.display = "none";
     vuoroPisteet = 0;
-    heittoPst.innerHTML = `Samperi, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan parin kolmesti!`;
+    heittoPst.innerHTML = `Samperi, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan ykkösen saadessaan parin kolmesti!`;
     tuplia = 0;
     vuoroNro += 1;
     if(vuoroNro == pelaajat.length){
@@ -227,4 +228,5 @@ function liikaaTuplia(){
 function animaatioLoppu(){
     document.getElementById("norminoppa").style.animation = "none";
     document.getElementById("extranoppa").style.animation = "none";
+    document.getElementById("heittoPst").style.display = "block";
 }
