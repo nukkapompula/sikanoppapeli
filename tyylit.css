@@ -1,13 +1,14 @@
 @keyframes noppa {
-    0% {
-        transform: rotate(0deg) scale(2.0, 2.0);
-    }
-    75% {
-        transform: rotate(350deg) scale(0.7, 0.7);
-    }
-    100% {
-        transform: rotate(360deg) scale(1.0, 1.0);
-    }
+    0% {transform: rotate(0deg) scale(2.0, 2.0);}
+    75% {transform: rotate(350deg) scale(0.7, 0.7);}
+    100% {transform: rotate(360deg) scale(1.0, 1.0);}
+}
+
+@keyframes tausta {
+    0% {background-color: rgb(157, 15, 223);}
+    25% {background-color: rgb(237, 232, 66);}
+    75% {background-color: rgb(235, 80, 145);}
+    100% {background-color: rgb(157, 15, 223);}
 }
 
 body {
@@ -19,16 +20,23 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     text-shadow: 6px 3px 11px rgba(0, 0, 0, 0.666);
+    animation: tausta 10s linear 0s infinite normal;
 }
 
 button, input, select, option {
     border: 2px solid black;
     border-radius: 6px;
     background-color: rgba(255, 255, 255, 0.666);
+    text-shadow: 6px 3px 11px rgba(0, 0, 0, 0.666);
+    box-shadow: 6px 3px 21px rgba(0, 0, 0, 0.666);
     font-family: "Goudy Old Style", Arial;
     font-size: 90%;
     text-align: center;
     padding: 6px;
+}
+
+input, select {
+    text-shadow: none;
 }
 
 #asetukset, #lisaohjeet, #noppaPeli, #lopeta, #voittoIkkuna {
@@ -61,6 +69,7 @@ img {
     margin: 0px 33%;
     margin-top: 10px;
     line-height: 0.9;
+    text-shadow: 6px 3px 11px rgba(0, 0, 0, 0.666);
 }
 
 #pelaajaLoota {
