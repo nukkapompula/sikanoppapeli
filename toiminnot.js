@@ -14,8 +14,9 @@ sivu5.src = "nro6.gif";
 
 document.getElementById("pelaajatOk").addEventListener("click", pelaajaMaara);
 document.getElementById("asetuksetOk").addEventListener("click", tarkistaAsetukset);
-document.getElementById("norminoppa").addEventListener("animationend", animaatioLoppu)
-document.getElementById("extranoppa").addEventListener("animationend", animaatioLoppu)
+document.getElementById("norminoppa").addEventListener("animationend", animaatioLoppu);
+document.getElementById("extranoppa").addEventListener("animationend", animaatioLoppu);
+document.getElementById("peliohi").addEventListener("animationend", finaaliruutu);
 let kenenVuoro = document.getElementById("kenenVuoro");
 let heittoPst = document.getElementById("heittoPst");
 let pisteraja = document.getElementById("pisteraja");
@@ -201,7 +202,7 @@ function lopeta(event){
         document.getElementById("voittoIkkuna").style.display = "block";
         document.getElementById("peliohjeet").style.display = "none";
         document.getElementById("noppaPeli").style.display = "none";
-        document.getElementById("voittoTeksti").innerHTML = `${pelaajat[vuoroNro].nimi} on voittaja! Hurraa!`;
+        document.getElementById("uusiPeli").style.display = "none";
     }
     document.getElementsByClassName("kokoPisteet")[vuoroNro].innerHTML = pelaajat[vuoroNro].pistesaldo;
     vuoroPisteet = 0;
@@ -233,4 +234,9 @@ function animaatioLoppu(){
     document.getElementById("heittoPst").style.visibility = "visible";
     document.getElementById("kenenVuoro").style.visibility = "visible";
     document.getElementById("heita").style.visibility = "visible";
+}
+
+function finaaliruutu(){
+    document.getElementById("voittoTeksti").innerHTML = `${pelaajat[vuoroNro].nimi} on voittaja! Hurraa!`;
+    document.getElementById("uusiPeli").style.display = "block";
 }

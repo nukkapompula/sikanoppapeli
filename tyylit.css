@@ -13,8 +13,14 @@
 @keyframes tausta {
     0% {background-color: rgb(157, 15, 223);}
     25% {background-color: rgb(237, 232, 66);}
+    50% {background-color: rgb(38, 182, 139);}
     75% {background-color: rgb(235, 80, 145);}
     100% {background-color: rgb(157, 15, 223);}
+}
+
+@keyframes loppunaytos {
+    0% {transform: scale(0.1, 0.1);}
+    100% {transform: scale(1.0, 1.0) rotate(-360deg);}
 }
 
 body {
@@ -26,7 +32,7 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     text-shadow: 6px 3px 11px rgba(0, 0, 0, 0.666);
-    animation: tausta 10s linear 0s infinite normal;
+    animation: tausta 20s linear 0s infinite normal;
 }
 
 button, input, select, option {
@@ -89,4 +95,13 @@ img {
 #tilanneLoota {
     margin-top: 10px;
     line-height: 0.9;
+}
+
+#peliohi {
+    width: 300px;
+    height: 338px;
+    box-shadow: none;
+    margin: 0px 0px;
+    display: inline-block;
+    animation: loppunaytos 0.5s ease 0s 1 normal;
 }
