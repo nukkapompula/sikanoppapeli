@@ -29,6 +29,7 @@ var pelaajat = [];
 var pisteetSaavutettu = false;
 var vuoroNro = 0;
 var tuplia = 0;
+var voittaja = "";
 
 function pelaajaMaara(event){
     // käyttäjän syöttäessä pelaajien lukumäärän asetukset ilmestyvät näkyviin
@@ -199,6 +200,7 @@ function lopeta(event){
     pelaajat[vuoroNro].pistesaldo += vuoroPisteet;
     // tarkistetaan riittävätkö pisteet voittoon
     if(pelaajat[vuoroNro].pistesaldo >= maxPisteet){
+        voittaja = pelaajat[vuoroNro].nimi;
         document.getElementById("voittoIkkuna").style.display = "block";
         document.getElementById("peliohjeet").style.display = "none";
         document.getElementById("noppaPeli").style.display = "none";
@@ -237,6 +239,6 @@ function animaatioLoppu(){
 }
 
 function finaaliruutu(){
-    document.getElementById("voittoTeksti").innerHTML = `${pelaajat[vuoroNro].nimi} on voittaja! Hurraa!`;
-    document.getElementById("uusiPeli").style.display = "block";
+    document.getElementById("voittoTeksti").innerHTML = `${voittaja} on voittaja! Hurraa!`;
+    document.getElementById("uusiPeli").style.display = "inline-block";
 }
