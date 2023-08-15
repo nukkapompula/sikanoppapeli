@@ -101,12 +101,13 @@ function tarkistaAsetukset(event){
 }
 
 function peliAlkaa(){
-    // valmistelut
+    // valittu määrä noppia sekä peliruutu näkyviin
     document.getElementById("noppaPeli").style.display = "grid";
     if(document.getElementById("noppaValikko").value == "1noppa"){
         document.getElementById("extranoppa").style.display = "none";
         document.getElementById("heita").innerHTML = "Heitä noppaa";
     }
+    // pelaajakohtaisten tietojen lisääminen vasemmalle
     for(indeksi=0; indeksi<pelaajat.length; indeksi++){
         let nimi = document.createElement("p");
         let nimiTeksti = document.createTextNode(pelaajat[indeksi].nimi + ", pisteet:");
@@ -118,6 +119,7 @@ function peliAlkaa(){
         document.getElementById("pelaajaLoota").appendChild(nimi);
         document.getElementById("pelaajaLoota").appendChild(saldo);
     }
+    // tapahtumatietojen luominen keskelle
     kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
     heittoPst.innerHTML = "";
     pisteraja.innerHTML = `Voittoon tarvitaan ${maxPisteet} pistettä tai enemmän.`;
@@ -126,6 +128,7 @@ function peliAlkaa(){
 }
 
 function heitaNoppaa(event){
+    // painikkeet piiloon heittoanimaation ajaksi
     document.getElementById("heittoPst").style.visibility = "hidden";
     document.getElementById("kenenVuoro").style.visibility = "hidden";
     document.getElementById("heita").style.visibility = "hidden";
@@ -134,6 +137,7 @@ function heitaNoppaa(event){
         var noppaluku = Math.round(Math.random()*5);
         document.images["noppakuvake"].src = eval("sivu" + noppaluku + ".src");
         document.getElementById("norminoppa").style.animation = "noppa 0.5s ease-in 0s 1 normal";
+        // ykkösen sattuessa
         if(noppaluku == 0){
             document.getElementById("lopeta").style.display = "none";
             vuoroPisteet = 0;
@@ -144,6 +148,7 @@ function heitaNoppaa(event){
             }
             kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`
         } else {
+            // muu kuin silmäluku 1
             vuoroPisteet += noppaluku+1;
             kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
             heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
@@ -183,12 +188,14 @@ function heitaNoppaa(event){
             heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
             document.getElementById("lopeta").style.display = "block";
         } else {
+        // "normaali" heitto
             vuoroPisteet += noppaluku+1 + noppaluku2+1;
             kenenVuoro.innerHTML = `Sinun vuorosi, ${pelaajat[vuoroNro].nimi}!`;
             heittoPst.innerHTML = `Voit lisätä saldoosi ${vuoroPisteet} pistettä lopettamalla heittämisen.`;
             document.getElementById("lopeta").style.display = "block";
         }
     }
+    // tuplien liiallisuuden tarkastaminen
     if(tuplia > 2){
         liikaaTuplia();
     }
@@ -218,6 +225,7 @@ function lopeta(event){
 }
 
 function liikaaTuplia(){
+    // vuoro päättyy kolmen tuplan jälkeen
     document.getElementById("lopeta").style.display = "none";
     vuoroPisteet = 0;
     heittoPst.innerHTML = `Samperi, ${pelaajat[vuoroNro].nimi} menetti vuoronsa pisteet saadessaan parin kolmesti!`;
